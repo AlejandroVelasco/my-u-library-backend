@@ -12,7 +12,6 @@ from django.utils import timezone
 
 
 class CheckoutViewSet(viewsets.ModelViewSet):
-    queryset = Checkout.objects.select_related("user", "book").all()
     serializer_class = CheckoutSerializer
 
     def get_permissions(self):
@@ -26,10 +25,11 @@ class CheckoutViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
+        qs = Checkout.objects.select_related("user", "book").all()
         if user.role == "librarian":
-            return self.queryset
+            return qs
         # student → only his own checkouts
-        return self.queryset.filter(user=user)
+        return qs.filter(user=user)
 
     def perform_create(self, serializer):
         book = serializer.validated_data["book"]
