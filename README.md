@@ -92,7 +92,3 @@ backend/
 
    Access the admin at [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
-
----
-
-*This README serves as an initial guide. Feel free to expand with API endpoint details, Docker instructions, frontend setup, or deployment steps as the project evolves.*
