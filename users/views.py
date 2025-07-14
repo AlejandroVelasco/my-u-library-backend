@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import User
 from .serializers import UserSerializer, UserRegisterSerializer
 from .permissions import IsLibrarian
+from rest_framework.decorators import api_view, permission_classes
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -23,3 +24,9 @@ class UserViewSet(viewsets.ModelViewSet):
             # also only authenticated librarians can update or delete users
             permission_classes = [IsAuthenticated, IsLibrarian]
         return [p() for p in permission_classes]
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def profile(request):
+    # returns full user data, including role
+    return Response(UserSerializer(request.user).data)

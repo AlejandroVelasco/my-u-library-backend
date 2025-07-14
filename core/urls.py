@@ -5,6 +5,7 @@ from users.views import UserViewSet
 from books.views import BookViewSet
 from checkouts.views import CheckoutViewSet
 from rest_framework.authtoken.views import obtain_auth_token
+from users.views import profile
 
 router = DefaultRouter()
 
@@ -17,4 +18,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/auth/login/", obtain_auth_token, name="api_token_auth"),
     path("api/", include(router.urls)),
+    path('api/auth/profile/', profile, name='api_profile'),
+
 ]
