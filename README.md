@@ -92,3 +92,7 @@ backend/
 
    Access the admin at [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
+## 🔗 Related Projects
+
+- **Frontend**: https://github.com/AlejandroVelasco/my-u-library-frontend  
+- **Live Demo (Frontend)**: https://musical-daffodil-271a3e.netlify.app/login
